@@ -7,6 +7,9 @@ description: >-
   edit, ❌ to skip. The agent never sends without your approval.
 category: sales
 
+example:
+  prompt: "Who is this person and how should I reply?"
+
 story:
   hero: "An inbox that researches senders before you reply."
   subheadline: >-
