@@ -1,6 +1,6 @@
 # AgentMail Inbox Triage
 
-Email lands in your dedicated agent inbox — it pulls the company, the role, and the likely intent, then drafts a reply for your sign-off in Slack.
+Every day, triages your agent inbox — company, role, intent — and drafts replies for your sign-off in Slack.
 
 ## Prerequisites
 - An [AgentMail](https://agentmail.to) account with a dedicated inbox for this agent and an API key

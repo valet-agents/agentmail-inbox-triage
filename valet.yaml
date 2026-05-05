@@ -1,25 +1,23 @@
 name: agentmail-inbox-triage
 display_name: AgentMail Inbox Triage
 description: >-
-  Email lands in your dedicated agent inbox — it pulls the
-  company, the role, and the likely intent, then drafts a reply
-  for your sign-off in Slack. Reply 👍 to send, ✏️ to edit, ❌
-  to skip. The agent never sends without your approval.
+  Every day, triages your dedicated agent inbox — pulls company,
+  role, and likely intent for each new sender — and drafts a
+  reply for your sign-off in Slack. Reply 👍 to send, ✏️ to
+  edit, ❌ to skip. The agent never sends without your approval.
 category: sales
 
 story:
   hero: "An inbox that researches senders before you reply."
   subheadline: >-
-    Email lands in your dedicated agent inbox — it pulls the
-    company, the role, and the likely intent, then drafts a
-    reply for your sign-off in Slack.
+    Every day, triages your agent inbox — company, role, intent
+    — and drafts replies for your sign-off in Slack.
   steps:
     - role: trigger
-      title: "An email lands in your agent inbox."
+      title: "Every morning."
       body: >-
-        The heartbeat fires once a day and detects threads
-        received since the last sweep — emails are
-        time-sensitive, so the cadence is tight.
+        The heartbeat fires once a day and picks up every email
+        that landed since the last run.
     - role: action
       title: "It researches the sender and drafts a reply."
       body: >-
@@ -66,7 +64,7 @@ connectors:
       blurb: >-
         One-click connector for Parallel's search MCP — no API
         key to manage. Powers the sender summaries the agent
-        posts when a new email lands.
+        posts on each daily triage pass.
       done_note: "Parallel ready"
 
 channels:
