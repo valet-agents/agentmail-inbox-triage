@@ -1,0 +1,90 @@
+name: agentmail-inbox-triage
+display_name: AgentMail Inbox Triage
+description: >-
+  Email lands in your dedicated agent inbox — it pulls the
+  company, the role, and the likely intent, then drafts a reply
+  for your sign-off in Slack. Reply 👍 to send, ✏️ to edit, ❌
+  to skip. The agent never sends without your approval.
+category: sales
+
+story:
+  hero: "An inbox that researches senders before you reply."
+  subheadline: >-
+    Email lands in your dedicated agent inbox — it pulls the
+    company, the role, and the likely intent, then drafts a
+    reply for your sign-off in Slack.
+  steps:
+    - role: trigger
+      title: "An email lands in your agent inbox."
+      body: >-
+        The heartbeat fires every 2 minutes and detects threads
+        received since the last sweep — emails are
+        time-sensitive, so the cadence is tight.
+    - role: action
+      title: "It researches the sender and drafts a reply."
+      body: >-
+        Pulls the company, role, and likely intent via Parallel,
+        then composes a reply in your voice — six sentences, no
+        fluff.
+      catalog: agentmail
+    - role: outcome
+      title: "Draft posted in Slack for your sign-off."
+      body: >-
+        Sender summary, intent, and a draft reply. React 👍 to
+        send, ✏️ to edit, ❌ to skip. Never sends on its own.
+      catalog: slack
+
+connectors:
+  - catalog: agentmail
+    description: >-
+      The AgentMail CLI, preconfigured with your API key. The
+      agent uses it to list inboxes, list threads, read
+      messages, draft replies, and (only after explicit Slack
+      confirmation) send replies. The connector name `agentmail`
+      is the CLI command on PATH.
+    slots:
+      AGENTMAIL_API_KEY:
+        where_to_get: >-
+          Sign up at agentmail.to, create a dedicated inbox for
+          this agent, then copy the API key from the dashboard.
+    ui:
+      headline: "Add your AgentMail API key."
+      blurb: >-
+        Sign up at agentmail.to, create a dedicated inbox for
+        this agent, then paste the API key here. The agent
+        triages that one inbox.
+      done_note: "AgentMail connected"
+
+  - catalog: parallel-search-mcp
+    description: >-
+      Parallel's deep-research search MCP. The agent uses it to
+      research each new sender — company, role, last public
+      mention, likely intent — with source URLs returned
+      alongside every result. Keyless — no token required.
+    ui:
+      headline: "Add Parallel deep research."
+      blurb: >-
+        One-click connector for Parallel's search MCP — no API
+        key to manage. Powers the sender summaries the agent
+        posts when a new email lands.
+      done_note: "Parallel ready"
+
+channels:
+  - catalog: slack
+    description: >-
+      The agent gets its own Slack bot. Invite it to whichever
+      channels you want triage cards in, and to any other
+      channel where teammates should be able to @mention it for
+      ad-hoc inbox questions. Reactions on triage cards drive
+      the send/edit/skip flow.
+    ui:
+      headline: "Give Inbox Triage a Slack bot."
+      blurb: >-
+        The agent posts each triage card to every channel you
+        invite it to. Invite it to one focused channel, or
+        several — whatever matches how your team works.
+      done_note: "Bot ready — invite it to a channel"
+
+  - type: heartbeat
+    every: 2m
+    description: "Sweeps the AgentMail inbox every 2 minutes for new threads to triage. Email is time-sensitive, so the cadence is tight."
