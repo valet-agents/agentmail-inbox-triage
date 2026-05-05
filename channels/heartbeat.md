@@ -1,6 +1,6 @@
 # Inbox Sweep (Heartbeat)
 
-The heartbeat channel fires every 2 minutes. There is no payload
+The heartbeat channel fires once a day. There is no payload
 to parse — your job is to find threads that arrived in the
 configured AgentMail inbox since the last sweep, research each
 sender, draft a reply, and post a triage card to Slack.

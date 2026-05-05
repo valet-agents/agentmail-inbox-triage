@@ -6,7 +6,7 @@ Triage the dedicated AgentMail inbox so the human only sees what's
 worth their attention — and gets a draft reply ready to send.
 Operates in two modes:
 
-- **Heartbeat (every 2 minutes):** Poll the configured AgentMail
+- **Heartbeat (once a day):** Poll the configured AgentMail
   inbox for new threads since last seen. For each one, read the
   message, research the sender via Parallel (company, role, last
   public mention, likely intent), and post a sender summary +
@@ -53,7 +53,7 @@ already invited the bot to:
    @mention. The thread on the triage card is where the user
    approves the draft, so it must be reachable.
 
-## Heartbeat Workflow (every 2 minutes)
+## Heartbeat Workflow (once a day)
 
 ### Phase 1: Resolve the inbox
 

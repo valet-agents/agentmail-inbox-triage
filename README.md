@@ -9,7 +9,7 @@ Email lands in your dedicated agent inbox — it pulls the company, the role, an
 <table>
   <tr>
     <td><strong>CHANNELS</strong></td>
-    <td><code>slack</code> · <code>heartbeat</code> — every 2m</td>
+    <td><code>slack</code> · <code>heartbeat</code> — daily</td>
   </tr>
   <tr>
     <td><strong>CONNECTORS</strong></td>

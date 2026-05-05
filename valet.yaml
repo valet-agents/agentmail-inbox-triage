@@ -17,7 +17,7 @@ story:
     - role: trigger
       title: "An email lands in your agent inbox."
       body: >-
-        The heartbeat fires every 2 minutes and detects threads
+        The heartbeat fires once a day and detects threads
         received since the last sweep — emails are
         time-sensitive, so the cadence is tight.
     - role: action
@@ -86,5 +86,5 @@ channels:
       done_note: "Bot ready — invite it to a channel"
 
   - type: heartbeat
-    every: 2m
-    description: "Sweeps the AgentMail inbox every 2 minutes for new threads to triage. Email is time-sensitive, so the cadence is tight."
+    every: 24h
+    description: "Sweeps the AgentMail inbox once a day for new threads to triage. Email is time-sensitive, so the cadence is tight."

@@ -10,7 +10,7 @@ This folder contains the source for a Skilled Agent originally built for the Val
 ### Channels
 
 - **slack** (slack): The agent's per-agent Slack bot. Listens for @mentions and replies in-thread, posts each triage card to whichever channels the bot has been invited to, and routes 👍 / ✏️ / ❌ reactions to the send/edit/skip flow. Slack writes use the auto-injected outbound Slack connector.
-- **heartbeat** (heartbeat): Fires every 2 minutes to sweep the configured AgentMail inbox for new threads. Declared inline in `valet.yaml`, so it's created automatically by the dashboard setup flow.
+- **heartbeat** (heartbeat): Fires once a day to sweep the configured AgentMail inbox for new threads. Declared inline in `valet.yaml`, so it's created automatically by the dashboard setup flow.
 
 ### Secrets
 
@@ -29,7 +29,7 @@ The Parallel MCP is keyless and the Slack bot is provisioned via OAuth in the da
 
 ## Customizing
 
-- **Change the heartbeat cadence**: edit the `every` value on the `heartbeat` channel in `valet.yaml` (e.g. `1m` for the highest-volume inboxes that want near-real-time, `5m` for low-volume inboxes that don't need sub-2-minute SLAs), then redeploy. The default `2m` matches typical email response expectations.
+- **Change the heartbeat cadence**: edit the `every` value on the `heartbeat` channel in `valet.yaml` (e.g. `1h` for hourly triage, `5m` for near-real-time on a busy inbox), then redeploy. The default `24h` is a once-a-day batch — drop it down if your inbox needs faster turnaround.
 - **Pin a specific inbox**: set `INBOX_ID` on the agent to skip discovery when your account has multiple inboxes. Useful if you don't want every inbox triaged — only one.
 - **Tune what counts as low-value**: edit *Phase 4: Draft the reply* in `SOUL.md` to expand or shrink the "skip" categories (cold vendor pitches, generic recruiter blasts, transactional receipts). Skipped threads still get a card in Slack — they're just marked `can ignore — no reply needed` instead of carrying a draft.
 - **Adjust the dossier sections**: edit the *Phase 5* template in `SOUL.md` to add or drop fields (e.g. drop the `Confidence` line if your team prefers a tighter card, or add a `Last contact` line if you want history surfaced).
