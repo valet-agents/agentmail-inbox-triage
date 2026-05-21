@@ -43,11 +43,10 @@ connectors:
       messages, draft replies, and (only after explicit Slack
       confirmation) send replies. The connector name `agentmail`
       is the CLI command on PATH.
-    slots:
-      AGENTMAIL_API_KEY:
-        where_to_get: >-
-          Sign up at agentmail.to, create a dedicated inbox for
-          this agent, then copy the API key from the dashboard.
+    slot_descriptions:
+      AGENTMAIL_API_KEY: >-
+        Sign up at agentmail.to, create a dedicated inbox for
+        this agent, then copy the API key from the dashboard.
     ui:
       headline: "Add your AgentMail API key."
       blurb: >-
